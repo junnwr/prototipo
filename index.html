@@ -1,293 +1,502 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engrenagem Industrial | Soluções Mecânicas</title>
-    <style>
-        /* Reset e Fontes */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            /* Esconde a barra de rolagem padrão */
-            overflow: hidden; 
-        }
+<title>Engrenagem Industrial | Soluções Mecânicas</title>
 
-        /* Container Principal */
-        #app {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-        }
+<style>
 
-        /* A Engrenagem de Fundo */
-        .gear-background {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            /* Centraliza o elemento */
-            transform: translate(-50%, -50%) rotate(0deg);
-            width: 80vmin;
-            height: 80vmin;
-            z-index: 0;
-            opacity: 0.15;
-            /* Transição suave para o giro */
-            transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
 
-        /* Container das Páginas (Flexbox horizontal) */
-        .pages-wrapper {
-            display: flex;
-            width: 400vw; /* 4 páginas = 400% da largura da tela */
-            height: 100vh;
-            /* Transição suave para o movimento lateral */
-            transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-            position: relative;
-            z-index: 10;
-        }
+body{
+    background:#121212;
+    color:#fff;
+    overflow:hidden;
+}
 
-        /* Cada Página individual */
-        .page {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5%;
-        }
+/* APP */
 
-        /* Caixa de Conteúdo */
-        .content {
-            background: rgba(30, 30, 30, 0.8);
-            border-left: 4px solid #f39c12; /* Laranja industrial */
-            padding: 40px;
-            max-width: 800px;
-            backdrop-filter: blur(10px); /* Efeito de vidro */
-            border-radius: 0 15px 15px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transform: translateY(30px);
-            opacity: 0;
-            transition: all 0.8s ease 0.3s; /* Delay para animar após a página chegar */
-        }
+#app{
+    position:relative;
+    width:100vw;
+    height:100vh;
+}
 
-        /* Classe ativa para animar o texto quando a página chegar */
-        .page.active .content {
-            transform: translateY(0);
-            opacity: 1;
-        }
+/* ENGRENAGEM */
 
-        .content h1 {
-            font-size: 3rem;
-            color: #f39c12;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+.gear-background{
+    position:fixed;
+    top:50%;
+    left:50%;
 
-        .content p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #cccccc;
-            margin-bottom: 15px;
-        }
+    width:80vmin;
+    height:80vmin;
 
-        /* Navegação em pontinhos (Dots) */
-        .nav-dots {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 15px;
-            z-index: 20;
-        }
+    transform:
+        translate(-50%,-50%)
+        rotate(0deg);
 
-        .dot {
-            width: 12px;
-            height: 12px;
-            background-color: #555;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+    opacity:.13;
 
-        .dot.active {
-            background-color: #f39c12;
-            transform: scale(1.5);
-        }
-    </style>
+    z-index:0;
+
+    transition:
+        transform 1s cubic-bezier(.645,.045,.355,1);
+
+    filter:
+        drop-shadow(0 0 10px rgba(243,156,18,.3))
+        drop-shadow(0 0 30px rgba(243,156,18,.15));
+}
+
+/* PÁGINAS */
+
+.pages-wrapper{
+    display:flex;
+
+    width:400vw;
+    height:100vh;
+
+    position:relative;
+    z-index:10;
+
+    transition:
+        transform 1s cubic-bezier(.645,.045,.355,1);
+}
+
+.page{
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:5%;
+}
+
+/* CONTEÚDO */
+
+.content{
+    background:
+        rgba(30,30,30,.78);
+
+    backdrop-filter:blur(12px);
+
+    border-left:4px solid #f39c12;
+
+    border-radius:0 18px 18px 0;
+
+    padding:40px;
+
+    max-width:800px;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.5);
+
+    transform:translateY(30px);
+
+    opacity:0;
+
+    transition:
+        all .8s ease .3s;
+}
+
+.page.active .content{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.content h1{
+    font-size:3rem;
+
+    color:#f39c12;
+
+    margin-bottom:20px;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+}
+
+.content p{
+    font-size:1.2rem;
+
+    line-height:1.7;
+
+    color:#ccc;
+
+    margin-bottom:15px;
+}
+
+/* DOTS */
+
+.nav-dots{
+    position:fixed;
+
+    bottom:30px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    gap:15px;
+
+    z-index:20;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+
+    background:#555;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.dot.active{
+    background:#f39c12;
+
+    transform:scale(1.5);
+
+    box-shadow:
+        0 0 10px rgba(243,156,18,.8);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    .content{
+        padding:30px;
+    }
+
+    .content h1{
+        font-size:2rem;
+    }
+
+    .content p{
+        font-size:1rem;
+    }
+
+    .gear-background{
+        width:120vmin;
+        height:120vmin;
+    }
+}
+
+</style>
 </head>
+
 <body>
 
-    <div id="app">
-        <!-- SVG desenhado na mão representando a engrenagem -->
-        <svg class="gear-background" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 50 2 
-                     L 55 12 A 38 38 0 0 1 67 17 L 77 10 
-                     L 84 16 L 77 26 A 38 38 0 0 1 88 38 L 98 33 
-                     L 100 43 L 90 48 A 38 38 0 0 1 90 60 L 100 65 
-                     L 98 75 L 88 70 A 38 38 0 0 1 77 82 L 84 92 
-                     L 77 98 L 67 91 A 38 38 0 0 1 55 96 L 50 106 
-                     L 40 106 L 45 96 A 38 38 0 0 1 33 91 L 23 98 
-                     L 16 92 L 23 82 A 38 38 0 0 1 12 70 L 2 75 
-                     L 0 65 L 10 60 A 38 38 0 0 1 10 48 L 0 43 
-                     L 2 33 L 12 38 A 38 38 0 0 1 23 26 L 16 16 
-                     L 23 10 L 33 17 A 38 38 0 0 1 45 12 L 40 2 Z" 
-                  fill="none" stroke="#f39c12" stroke-width="2" />
-            <circle cx="50" cy="50" r="25" fill="none" stroke="#f39c12" stroke-width="2"/>
-            <circle cx="50" cy="50" r="10" fill="#f39c12" />
-            <!-- Raios da engrenagem -->
-            <line x1="50" y1="25" x2="50" y2="40" stroke="#f39c12" stroke-width="2"/>
-            <line x1="50" y1="75" x2="50" y2="60" stroke="#f39c12" stroke-width="2"/>
-            <line x1="25" y1="50" x2="40" y2="50" stroke="#f39c12" stroke-width="2"/>
-            <line x1="75" y1="50" x2="60" y2="50" stroke="#f39c12" stroke-width="2"/>
-        </svg>
+<div id="app">
 
-        <div class="pages-wrapper">
-            <!-- Página 1: Home -->
-            <section class="page active" id="page-0">
-                <div class="content">
-                    <h1>Engrenagem Central</h1>
-                    <p>O motor que impulsiona a produtividade da sua indústria.</p>
-                    <p>Soluções completas em mecânica pesada, logística e infraestrutura. Role o mouse para conhecer as engrenagens do nosso sistema.</p>
-                </div>
-            </section>
+    <!-- ENGRENAGEM -->
+    <svg class="gear-background"
+         viewBox="0 0 200 200"
+         xmlns="http://www.w3.org/2000/svg">
 
-            <!-- Página 2 -->
-            <section class="page" id="page-1">
-                <div class="content">
-                    <h1>Mecânica & Usinagem</h1>
-                    <p>Manutenção preventiva e corretiva para manter sua linha de produção rodando sem interrupções.</p>
-                    <p>Especialistas em soldagem, torno, fresa e operação de maquinário pesado com certificação NR-11.</p>
-                </div>
-            </section>
+        <g transform="translate(100 100)">
 
-            <!-- Página 3 -->
-            <section class="page" id="page-2">
-                <div class="content">
-                    <h1>Automação & Redes</h1>
-                    <p>A mecânica moderna exige inteligência. Integramos sua planta industrial com infraestrutura de redes robusta.</p>
-                    <p>Monitoramento em tempo real, cibersegurança de dados industriais e soluções escaláveis em nuvem para automação de processos.</p>
-                </div>
-            </section>
+            <!-- DENTES -->
+            <g fill="#f39c12">
 
-            <!-- Página 4 -->
-            <section class="page" id="page-3">
-                <div class="content">
-                    <h1>Fale Conosco</h1>
-                    <p>Pronto para otimizar sua operação? Nossa equipe técnica está à disposição para uma análise da sua infraestrutura.</p>
-                    <p>Entre em contato para projetos personalizados de integração mecânica e lógica.</p>
-                </div>
-            </section>
-        </div>
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(0)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(22.5)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(45)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(67.5)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(90)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(112.5)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(135)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(157.5)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(180)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(202.5)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(225)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(247.5)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(270)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(292.5)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(315)" />
+                <rect x="-7" y="-92" width="14" height="24" rx="2" transform="rotate(337.5)" />
 
-        <!-- Indicadores de navegação -->
-        <div class="nav-dots">
-            <div class="dot active" data-index="0"></div>
-            <div class="dot" data-index="1"></div>
-            <div class="dot" data-index="2"></div>
-            <div class="dot" data-index="3"></div>
-        </div>
+            </g>
+
+            <!-- CORPO -->
+            <circle
+                r="72"
+                fill="none"
+                stroke="#f39c12"
+                stroke-width="12"
+            />
+
+            <!-- ANEL INTERNO -->
+            <circle
+                r="42"
+                fill="none"
+                stroke="#f39c12"
+                stroke-width="10"
+            />
+
+            <!-- RAIOS -->
+            <g
+                stroke="#f39c12"
+                stroke-width="8"
+                stroke-linecap="round">
+
+                <line x1="0" y1="-42" x2="0" y2="-18"/>
+                <line x1="0" y1="42" x2="0" y2="18"/>
+                <line x1="-42" y1="0" x2="-18" y2="0"/>
+                <line x1="42" y1="0" x2="18" y2="0"/>
+
+            </g>
+
+            <!-- CENTRO -->
+            <circle
+                r="12"
+                fill="#f39c12"
+            />
+
+        </g>
+    </svg>
+
+    <!-- PÁGINAS -->
+    <div class="pages-wrapper">
+
+        <!-- HOME -->
+        <section class="page active">
+
+            <div class="content">
+
+                <h1>Engrenagem Central</h1>
+
+                <p>
+                    O motor que impulsiona a produtividade da sua indústria.
+                </p>
+
+                <p>
+                    Soluções completas em mecânica pesada, logística e
+                    infraestrutura. Role o mouse para conhecer as engrenagens
+                    do nosso sistema.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- PÁGINA 2 -->
+        <section class="page">
+
+            <div class="content">
+
+                <h1>Mecânica & Usinagem</h1>
+
+                <p>
+                    Manutenção preventiva e corretiva para manter sua linha
+                    de produção rodando sem interrupções.
+                </p>
+
+                <p>
+                    Especialistas em soldagem, torno, fresa e operação de
+                    maquinário pesado com certificação NR-11.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- PÁGINA 3 -->
+        <section class="page">
+
+            <div class="content">
+
+                <h1>Automação & Redes</h1>
+
+                <p>
+                    A mecânica moderna exige inteligência.
+                </p>
+
+                <p>
+                    Integramos sua planta industrial com monitoramento em
+                    tempo real, infraestrutura robusta e cibersegurança.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- PÁGINA 4 -->
+        <section class="page">
+
+            <div class="content">
+
+                <h1>Fale Conosco</h1>
+
+                <p>
+                    Nossa equipe técnica está pronta para analisar sua
+                    infraestrutura.
+                </p>
+
+                <p>
+                    Entre em contato para projetos personalizados de integração
+                    mecânica e lógica.
+                </p>
+
+            </div>
+
+        </section>
+
     </div>
 
-    <script>
-        const totalPages = 4;
-        let currentPage = 0;
-        let isAnimating = false;
+    <!-- DOTS -->
+    <div class="nav-dots">
 
-        const wrapper = document.querySelector('.pages-wrapper');
-        const gear = document.querySelector('.gear-background');
-        const pages = document.querySelectorAll('.page');
-        const dots = document.querySelectorAll('.dot');
+        <div class="dot active" data-index="0"></div>
+        <div class="dot" data-index="1"></div>
+        <div class="dot" data-index="2"></div>
+        <div class="dot" data-index="3"></div>
 
-        // Função para atualizar a tela
-        function updateView() {
-            isAnimating = true;
+    </div>
 
-            // Move as páginas horizontalmente (-100vw, -200vw, etc)
-            wrapper.style.transform = `translateX(-${currentPage * 100}vw)`;
-            
-            // Gira a engrenagem (45 graus por página dá um efeito legal)
-            // Mantendo o translate do eixo central para não sair do lugar
-            gear.style.transform = `translate(-50%, -50%) rotate(${currentPage * 45}deg)`;
+</div>
 
-            // Atualiza classes ativas (para animações de texto e pontinhos)
-            pages.forEach((page, index) => {
-                if(index === currentPage) {
-                    page.classList.add('active');
-                    dots[index].classList.add('active');
-                } else {
-                    page.classList.remove('active');
-                    dots[index].classList.remove('active');
-                }
-            });
+<script>
 
-            // Libera a trava de animação após 1 segundo (tempo do CSS transition)
-            setTimeout(() => {
-                isAnimating = false;
-            }, 1000);
+const totalPages = 4;
+
+let currentPage = 0;
+
+let isAnimating = false;
+
+const wrapper = document.querySelector('.pages-wrapper');
+
+const gear = document.querySelector('.gear-background');
+
+const pages = document.querySelectorAll('.page');
+
+const dots = document.querySelectorAll('.dot');
+
+/* UPDATE */
+
+function updateView(){
+
+    isAnimating = true;
+
+    wrapper.style.transform =
+        `translateX(-${currentPage * 100}vw)`;
+
+    gear.style.transform =
+        `translate(-50%, -50%) rotate(${currentPage * 45}deg)`;
+
+    pages.forEach((page,index)=>{
+
+        if(index === currentPage){
+
+            page.classList.add('active');
+
+            dots[index].classList.add('active');
+
+        }else{
+
+            page.classList.remove('active');
+
+            dots[index].classList.remove('active');
+        }
+    });
+
+    setTimeout(()=>{
+
+        isAnimating = false;
+
+    },1000);
+}
+
+/* SCROLL */
+
+window.addEventListener('wheel',(e)=>{
+
+    if(isAnimating) return;
+
+    if(e.deltaY > 0){
+
+        if(currentPage < totalPages - 1){
+
+            currentPage++;
+
+            updateView();
         }
 
-        // Evento de Scroll do Mouse (Wheel)
-        window.addEventListener('wheel', (e) => {
-            if (isAnimating) return; // Impede que pule várias páginas de uma vez
+    }else{
 
-            if (e.deltaY > 0) {
-                // Scroll para baixo -> Próxima página
-                if (currentPage < totalPages - 1) {
-                    currentPage++;
-                    updateView();
-                }
-            } else if (e.deltaY < 0) {
-                // Scroll para cima -> Página anterior
-                if (currentPage > 0) {
-                    currentPage--;
-                    updateView();
-                }
-            }
-        });
+        if(currentPage > 0){
 
-        // Eventos para Touch (Celulares e Tablets) - Deslizar o dedo
-        let touchStartY = 0;
-        window.addEventListener('touchstart', (e) => {
-            touchStartY = e.touches[0].clientY;
-        });
+            currentPage--;
 
-        window.addEventListener('touchend', (e) => {
-            if (isAnimating) return;
-            let touchEndY = e.changedTouches[0].clientY;
-            
-            // Margem de 50px para evitar toques acidentais
-            if (touchStartY - touchEndY > 50) { 
-                // Deslizou para cima (vai para frente)
-                if (currentPage < totalPages - 1) {
-                    currentPage++;
-                    updateView();
-                }
-            } else if (touchEndY - touchStartY > 50) {
-                // Deslizou para baixo (vai para trás)
-                if (currentPage > 0) {
-                    currentPage--;
-                    updateView();
-                }
-            }
-        });
+            updateView();
+        }
+    }
+});
 
-        // Clique nos pontinhos de navegação
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                if (isAnimating) return;
-                currentPage = parseInt(dot.getAttribute('data-index'));
-                updateView();
-            });
-        });
-    </script>
+/* TOUCH */
+
+let touchStartY = 0;
+
+window.addEventListener('touchstart',(e)=>{
+
+    touchStartY = e.touches[0].clientY;
+});
+
+window.addEventListener('touchend',(e)=>{
+
+    if(isAnimating) return;
+
+    let touchEndY = e.changedTouches[0].clientY;
+
+    if(touchStartY - touchEndY > 50){
+
+        if(currentPage < totalPages - 1){
+
+            currentPage++;
+
+            updateView();
+        }
+
+    }else if(touchEndY - touchStartY > 50){
+
+        if(currentPage > 0){
+
+            currentPage--;
+
+            updateView();
+        }
+    }
+});
+
+/* DOTS */
+
+dots.forEach(dot=>{
+
+    dot.addEventListener('click',()=>{
+
+        if(isAnimating) return;
+
+        currentPage =
+            parseInt(dot.dataset.index);
+
+        updateView();
+    });
+});
+
+</script>
+
 </body>
 </html>
